@@ -1,4 +1,4 @@
-name: Commit bz2 files
+name: Auto Commit Changes
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  add-bz2:
+  commit:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -15,19 +15,34 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       - name: Configure Git
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      - name: Add .bz2 files
+      - name: Debug status before changes
         run: |
-          git add *.bz2 || true
+          echo "=== Git Status BEFORE ==="
+          git status
+          echo "=== Files ==="
+          ls -R .
+
+      # Your script that modifies Packages or other files goes here
+      # Example:
+      # - name: Modify Packages
+      #   run: |
+      #     echo "test" >> Packages
+
+      - name: Stage all changes
+        run: |
+          git add -A
 
       - name: Commit changes
         run: |
-          git commit -m "Add bz2 files" || echo "No changes to commit"
+          git commit -m "Auto-update files" || echo "No changes to commit"
 
       - name: Push changes
         run: |
