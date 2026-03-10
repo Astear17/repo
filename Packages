@@ -11,10 +11,10 @@ SHA256: 17c1d129ac2ca88603bb4987acf5b83f7cd7fbbda43533ab2c13b4caa1d2f129
 Section: Roothide
 Description: Chủ đề icon iOS 26 bằng SnowBoard
 Author: Astear17
-Depiction: https://astear17.github.io/repos/infodeb/Pure26.html
-Icon: https://astear17.github.io/repos/depictions/Pure26.png
+Depiction: https://astear17.github.io/Pure26
+Icon: https://astear17.github.io/Pure26/Pure26.png
 Name: Pure26 (Roothide)
-Sileodepiction: https://astear17.github.io/repos/depictions/Pure26.json
+Sileodepiction: https://astear17.github.io/Pure26/Pure26.json
 
 Package: com.pure26.astear17.r2
 Version: 1.1.0-Beta
@@ -29,10 +29,10 @@ SHA256: 0635a44fce4eb28e08e716ac762e6e596b91f6d7c744f9320ec3c06d5d180e25
 Section: Roothide
 Description: Chủ đề icon iOS 26 bằng SnowBoard
 Author: Astear17
-Depiction: https://astear17.github.io/repos/infodeb/Pure26.html
-Icon: https://astear17.github.io/repos/depictions/Pure26.png
+Depiction: https://astear17.github.io/Pure26
+Icon: https://astear17.github.io/Pure26/Pure26.png
 Name: Pure26 (Roothide)
-Sileodepiction: https://astear17.github.io/repos/depictions/Pure26.json
+Sileodepiction: https://astear17.github.io/Pure26/Pure26.json
 
 Package: com.pure26.astear17
 Version: 1.1.0-Beta
@@ -47,10 +47,10 @@ SHA256: 724bbeee0288a15d26d4217d91a9bf078305db461294c4bdf602edb36eefe583
 Section: Rootless
 Description: Chủ đề icon iOS 26 bằng SnowBoard
 Author: Astear17
-Depiction: https://astear17.github.io/repos/infodeb/Pure26.html
-Icon: https://astear17.github.io/repos/depictions/Pure26.png
+Depiction: https://astear17.github.io/Pure26
+Icon: https://astear17.github.io/Pure26/Pure26.png
 Name: Pure26 (Rootless)
-Sileodepiction: https://astear17.github.io/repos/depictions/Pure26.json
+Sileodepiction: https://astear17.github.io/Pure26/Pure26.json
 
 Package: com.pure26.astear17.r2
 Version: 1.2.0
@@ -65,10 +65,10 @@ SHA256: 83d7cf29375754efa73fb88f008f8a500cf866001a97414115ab49415c2527ba
 Section: Roothide
 Description: Chủ đề icon iOS 26 bằng SnowBoard
 Author: Astear17
-Depiction: https://astear17.github.io/repos/infodeb/Pure26.html
-Icon: https://astear17.github.io/repos/depictions/Pure26.png
+Depiction: https://astear17.github.io/Pure26
+Icon: https://astear17.github.io/Pure26/Pure26.png
 Name: Pure26 (Roothide)
-Sileodepiction: https://astear17.github.io/repos/depictions/Pure26.json
+Sileodepiction: https://astear17.github.io/Pure26/Pure26.json
 
 Package: com.pure26.astear17
 Version: 1.2.0
@@ -83,7 +83,7 @@ SHA256: 09503fe2c7a26b38caa9439d7d0e8e3c55bfb2a28b7a28ff2c210f269596a16c
 Section: Rootless
 Description: Chủ đề icon iOS 26 bằng SnowBoard
 Author: Astear17
-Depiction: https://astear17.github.io/repos/infodeb/Pure26.html
-Icon: https://astear17.github.io/repos/depictions/Pure26.png
+Depiction: https://astear17.github.io/Pure26
+Icon: https://astear17.github.io/Pure26/Pure26.png
 Name: Pure26 (Rootless)
-Sileodepiction: https://astear17.github.io/repos/depictions/Pure26.json
+Sileodepiction: https://astear17.github.io/Pure26/Pure26.json
