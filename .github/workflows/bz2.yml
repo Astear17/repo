@@ -3,43 +3,59 @@ name: bz2
 on:
   push:
     paths:
-      - '**'         
+      - '**'   # watch all files, can narrow down if you want
 
 jobs:
   compress:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      # 1️⃣ Checkout the repo with enough history
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+          fetch-depth: 2   # fetch last 2 commits so HEAD~1 exists
 
+      # 2️⃣ Configure git
       - name: Configure Git
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@users.noreply.github.com"
 
-      - name: Compress changed files
+      # 3️⃣ Compress changed files (loop-proof & verbose)
+      - name: Compress files
         run: |
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          echo "Detecting changed files..."
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD || true)
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changes detected or first commit, compressing all non-.bz2 files."
+            CHANGED_FILES=$(find . -type f ! -name '*.bz2')
+          fi
 
           for FILE in $CHANGED_FILES; do
+            # Skip .bz2 files
             if [[ $FILE == *.bz2 ]]; then
               continue
             fi
-
+            # Check if file exists
             if [[ -f $FILE ]]; then
               echo "Compressing $FILE → $FILE.bz2"
               bzip2 -k -f "$FILE"
             fi
           done
 
-      - name: Commit and push
+      # 4️⃣ Commit & push only if .bz2 files changed
+      - name: Commit and push .bz2
         run: |
           git add *.bz2
           if ! git diff --cached --quiet; then
-            git commit -m "Auto"
+            echo "Changes detected in .bz2 files. Committing..."
+            git commit -m "Auto-compress .bz2 files [skip ci]"
             git push
           else
-            echo "no changes, skipp commit."
+            echo "No changes to .bz2 files. Skipping commit."
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
