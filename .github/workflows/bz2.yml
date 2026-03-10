@@ -1,0 +1,45 @@
+name: bz2
+
+on:
+  push:
+    paths:
+      - '**'         
+
+jobs:
+  compress:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@users.noreply.github.com"
+
+      - name: Compress changed files
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+
+          for FILE in $CHANGED_FILES; do
+            if [[ $FILE == *.bz2 ]]; then
+              continue
+            fi
+
+            if [[ -f $FILE ]]; then
+              echo "Compressing $FILE → $FILE.bz2"
+              bzip2 -k -f "$FILE"
+            fi
+          done
+
+      - name: Commit and push
+        run: |
+          git add *.bz2
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto"
+            git push
+          else
+            echo "no changes, skipp commit."
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
