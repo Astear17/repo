@@ -53,7 +53,8 @@ jobs:
           if ! git diff --cached --quiet; then
             echo "Changes detected in .bz2 files. Committing..."
             git commit -m "Auto-compress .bz2 files [skip ci]"
-            git push
+            # Push explicitly to the branch to avoid detached HEAD error
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
           else
             echo "No changes to .bz2 files. Skipping commit."
           fi
