@@ -23,17 +23,21 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
 
-      - name: Modify Packages
+      - name: Generate Packages
         run: |
-          echo "Updated at $(date)" >> Packages
+          dpkg-scanpackages ./debs > Packages
 
-      - name: Stage all changes
+      - name: Compress Packages
         run: |
-          git add -A
+          bzip2 -f Packages
+
+      - name: Stage compressed file only
+        run: |
+          git add Packages.bz2
 
       - name: Commit changes
         run: |
-          git commit -m "Auto-update files" || echo "No changes to commit"
+          git commit -m "Update Packages.bz2" || echo "No changes to commit"
 
       - name: Push changes
         run: |
